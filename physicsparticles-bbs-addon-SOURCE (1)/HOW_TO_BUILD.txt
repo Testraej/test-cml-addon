@@ -1,0 +1,115 @@
+====================================================================
+  HOW TO BUILD THE PHYSICS PARTICLES BBS ADDON
+  (No programming knowledge needed - takes about 10-15 minutes)
+====================================================================
+
+WHAT YOU WILL DO:
+  Use a free website called GitHub Codespaces which is basically a
+  computer in your browser. You type a few commands and it spits
+  out the .jar file for you.
+
+--------------------------------------------------------------------
+STEP 1 - Make a free GitHub account
+--------------------------------------------------------------------
+  1. Go to https://github.com
+  2. Click "Sign Up" and create a free account (just email + password)
+
+--------------------------------------------------------------------
+STEP 2 - Create a new repository
+--------------------------------------------------------------------
+  1. After logging in, click the green "New" button (top left)
+  2. Name it:  physicsparticles-bbs-addon
+  3. Make it Private (so nobody else can see it)
+  4. Tick the box "Add a README file"
+  5. Click "Create repository"
+
+--------------------------------------------------------------------
+STEP 3 - Upload ALL the files from the zip
+--------------------------------------------------------------------
+  The zip you downloaded contains this folder structure:
+    physicsparticles-addon/
+      build.gradle
+      settings.gradle
+      gradle.properties
+      src/
+        main/
+          java/
+            com/physicsparticles/bbs/
+              PhysicsParticlesAddon.java
+              PhysicsParticlesClientAddon.java
+              forms/
+                PhysicsParticleForm.java
+                PhysicsParticleFormRenderer.java
+              ui/
+                UIPhysicsParticleForm.java
+                UIPhysicsParticleFormPanel.java
+          resources/
+            fabric.mod.json
+      libs/
+        (EMPTY FOLDER - see Step 3b below)
+
+  3a. In your GitHub repository page, click "Add file" → "Upload files"
+  3b. IMPORTANT: Before uploading, go into the "libs" folder and put
+      ONLY this ONE file inside it:
+        - bbs-cml-edition-1_10_2-1_20_1.jar  (only 7.5MB, fits fine)
+
+      You do NOT need to upload the Physics Mod jar anywhere.
+      The addon finds Physics Mod automatically at runtime via your
+      mods folder. Physics Mod just needs to be in .minecraft/mods/
+      as it normally is.
+
+  3c. Upload everything. Make sure the folder structure is preserved.
+
+--------------------------------------------------------------------
+STEP 4 - Open GitHub Codespaces
+--------------------------------------------------------------------
+  1. On your repository page, click the green "Code" button
+  2. Click the "Codespaces" tab
+  3. Click "Create codespace on main"
+  4. Wait 1-2 minutes for it to load (looks like VS Code in browser)
+
+--------------------------------------------------------------------
+STEP 5 - Run the build command
+--------------------------------------------------------------------
+  1. In Codespaces, look for the "Terminal" menu at the top
+  2. Click Terminal → New Terminal
+  3. A black box appears at the bottom. Type exactly this:
+       chmod +x gradlew && ./gradlew build
+  4. Press Enter and wait (first run downloads stuff, takes 3-5 min)
+  5. You should see "BUILD SUCCESSFUL" at the end
+
+--------------------------------------------------------------------
+STEP 6 - Download your .jar file
+--------------------------------------------------------------------
+  1. In the left file panel, navigate to:
+       build → libs
+  2. You will see a file like:
+       physicsparticles-bbs-addon-1.0.0.jar
+  3. Right-click it → Download
+  4. Done! Put this .jar in your Minecraft mods folder.
+
+--------------------------------------------------------------------
+WHERE TO PUT THE JAR
+--------------------------------------------------------------------
+  Put it in: .minecraft/mods/
+  (Same folder as bbs-cml-edition and physics-mod-pro)
+
+  Then in-game:
+  1. Open BBS replay menu
+  2. Look for "Physics Particles" in the form list
+  3. Add it, then in the edit panel:
+     - Type a block ID (e.g. minecraft:grass_block, minecraft:stone)
+     - Set Count = how many fragments per burst
+     - Set Frequency = every N ticks (1=every tick, 20=once/sec)
+     - Spread = how wide particles scatter
+     - Offset X/Y/Z = shift the emission point
+  4. Use keyframes to change position, pause/unpause, etc.
+
+--------------------------------------------------------------------
+IF SOMETHING GOES WRONG
+--------------------------------------------------------------------
+  - If BUILD FAILS: screenshot the red error and post it in
+    the BBS Discord. Someone there can fix it in 2 minutes.
+  - Common issue: wrong .jar files in /libs folder
+  - Common issue: files uploaded in wrong folder structure
+====================================================================

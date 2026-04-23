@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "physicsparticles-bbs-addon",
+  "version": "${version}",
+  "name": "Physics Particles BBS Addon",
+  "description": "Adds a Physics Mod block-breaking particle form to BBS CML Edition",
+  "authors": ["You"],
+  "contact": {},
+  "license": "MIT",
+  "environment": "*",
+
+  "entrypoints": {
+    "bbs-addon": [
+      "com.physicsparticles.bbs.PhysicsParticlesAddon"
+    ],
+    "bbs-addon-client": [
+      "com.physicsparticles.bbs.PhysicsParticlesClientAddon"
+    ]
+  },
+
+  "depends": {
+    "fabricloader": ">=0.14.0",
+    "minecraft": "~1.20.1",
+    "fabric-api": "*",
+    "bbs": "*"
+  }
+}
